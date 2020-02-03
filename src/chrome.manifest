@@ -1,0 +1,3 @@
+content Header_Image_Switch chrome/content/
+style chrome://Header_Image_Switch/content/main.xul chrome://Header_Image_Switch/content/main.css
+overlay chrome://browser/content/browser.xul chrome://Header_Image_Switch/content/main.xul 
