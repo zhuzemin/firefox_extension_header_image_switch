@@ -1,7 +1,7 @@
-main();
     var lastTabLabel;
     var imgList=[];
     var imagePath=getComplexValue('Header_Image_Switch_Path')||null;
+main();
 function main(){
 	if(imagePath!=null){
     readDir(imagePath);
