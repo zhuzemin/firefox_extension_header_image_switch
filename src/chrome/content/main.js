@@ -124,6 +124,7 @@ var result = prompts.prompt(null, "Header Image Switch", "Image folder path:", i
 if(result){
 	imagePath=imagePathObj.value;
 	setComplexValue('Header_Image_Switch_Path',imagePath);
+    imgList=[];
 	main();
 }
 }
