@@ -17,7 +17,7 @@ Usage:
 
 Notice:		
 *extension will loop through all sub directory.
-*header_image.zip is my collected Acfun and Bilibili banner, very suitable for Header image.
+*acfun banner.rar is my collected Acfun and Bilibili banner, very suitable for Header image.
 
 
 [01](https://github.com/zhuzemin/firefox_extension_header_image_switch/raw/master/2020-02-03_091727.jpg)

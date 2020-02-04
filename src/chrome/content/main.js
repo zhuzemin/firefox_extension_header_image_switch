@@ -31,12 +31,13 @@ function main(){
 	if(imagePath!=null&&entensionEnable){
         readDir(imagePath);
     //readDir(OS.Constants.Path.profileDir + '\\chrome\\header image');
+        main_window.style.setProperty('background-size', 'contain', 'important');
         window.gBrowser.addEventListener("select",  function () {
             if(entensionEnable){
                 var randomNum = Math.floor(Math.random() * (imgList.length - 0));
                 var img = imgList[randomNum];
                 main_window.style.setProperty('--lwt-header-image', 'url("' + encodeURI('file:///' + img.replace(/\\/g, '/')) + '")', 'important');
-                main_window.style.setProperty('--lwt-background-alignment','TOP');                change();
+                //main_window.style.setProperty('--lwt-background-alignment','TOP');                change();
                 //var rainbow="#"+hex[r]+hex[g]+hex[b]
                 main_window.querySelector('#tabbrowser-tabs').style.setProperty('-webkit-text-fill-color', getRandomColor(), 'important');
 
