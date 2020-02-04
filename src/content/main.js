@@ -63,6 +63,7 @@ function entensionEnableSwitch(){
         if(entensionEnable){
             entensionEnable=false;
             main_window.querySelector('#tabbrowser-tabs').style.setProperty('-webkit-text-fill-color', 'black', 'important');
+            main_window.style.setProperty('--lwt-header-image', '', 'important');
             main_window.querySelector('#Header_Image_Switch_btn').className='disable';
         }
         else {
