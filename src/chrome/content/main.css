@@ -1,3 +1,6 @@
-#Header_Image_Switch_btn{
-  list-style-image: url("chrome://Header_Image_Switch/content/acfun-19.png");
+.enable{
+  list-style-image: url("chrome://Header_Image_Switch/content/acfun-19-on.png");
+}
+.disable{
+  list-style-image: url("chrome://Header_Image_Switch/content/acfun-19-off.png");
 }
