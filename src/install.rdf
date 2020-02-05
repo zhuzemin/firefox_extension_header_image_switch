@@ -5,7 +5,7 @@
           <em:type>2</em:type>
           <em:bootstrap>fasle</em:bootstrap>
           <em:unpack>false</em:unpack>
-          <em:version>1.22</em:version>
+          <em:version>1.24</em:version>
           <em:name>Header Image Switch</em:name>
           <em:description>switch header image when change Tab.</em:description>
           <em:creator>zhuzemin</em:creator>

@@ -1,4 +1,5 @@
     var imgList=[];
+    var count=0;
     var imagePath;
     try{
         imagePath=getComplexValue('Header_Image_Switch_Path');
@@ -30,18 +31,23 @@ main();
 function main(){
 	if(imagePath!=null&&entensionEnable){
         readDir(imagePath);
+        imgList=shuffle(imgList);
     //readDir(OS.Constants.Path.profileDir + '\\chrome\\header image');
         main_window.style.setProperty('background-size', 'contain', 'important');
         window.gBrowser.addEventListener("select",  function () {
             if(entensionEnable){
-                var randomNum = Math.floor(Math.random() * (imgList.length - 0));
-                var img = imgList[randomNum];
+                if(count==imgList.length){
+                    imgList=shuffle(imgList);
+                    count=0;
+                }
+                //var randomNum = Math.floor(Math.random() * (imgList.length - 0));
+                var img = imgList[count];
                 main_window.style.setProperty('--lwt-header-image', 'url("' + encodeURI('file:///' + img.replace(/\\/g, '/')) + '")', 'important');
                 //main_window.style.setProperty('--lwt-background-alignment','TOP');                change();
                 //var rainbow="#"+hex[r]+hex[g]+hex[b]
                 main_window.querySelector('#tabbrowser-tabs').style.setProperty('-webkit-text-fill-color', getRandomColor(), 'important');
 
-
+                count++;
             }
    });
         /*var interval=setInterval(function () {
@@ -58,6 +64,17 @@ function main(){
         },speed);*/
 }
 }
+    //shuffle array
+    function    shuffle (sourceArray) {
+        for (var i = 0; i < sourceArray.length - 1; i++) {
+            var j = i + Math.floor(Math.random() * (sourceArray.length - i));
+
+            var temp = sourceArray[j];
+            sourceArray[j] = sourceArray[i];
+            sourceArray[i] = temp;
+        }
+        return sourceArray;
+    }
 
 function entensionEnableSwitch(){
         if(entensionEnable){
