@@ -1,4 +1,5 @@
-    var imgList=[];
+var lastTabLabel;
+var imgList=[];
     var count=0;
     var imagePath;
     try{
@@ -34,20 +35,25 @@ function main(){
         imgList=shuffle(imgList);
     //readDir(OS.Constants.Path.profileDir + '\\chrome\\header image');
         main_window.style.setProperty('background-size', 'contain', 'important');
+        main_window.style.setProperty('text-shadow', '#222222 0.01em 0.01em 0.05em', 'important');
         window.gBrowser.addEventListener("select",  function () {
-            if(entensionEnable){
-                if(count==imgList.length){
-                    imgList=shuffle(imgList);
-                    count=0;
-                }
-                //var randomNum = Math.floor(Math.random() * (imgList.length - 0));
-                var img = imgList[count];
-                main_window.style.setProperty('--lwt-header-image', 'url("' + encodeURI('file:///' + img.replace(/\\/g, '/')) + '")', 'important');
-                //main_window.style.setProperty('--lwt-background-alignment','TOP');                change();
-                //var rainbow="#"+hex[r]+hex[g]+hex[b]
-                main_window.querySelector('#tabbrowser-tabs').style.setProperty('-webkit-text-fill-color', getRandomColor(), 'important');
+            if(entensionEnable) {
+                var currentTabLabel = window.gBrowser.selectedTab.label;
+                if (currentTabLabel != lastTabLabel) {
+                    if (count == imgList.length) {
+                        imgList = shuffle(imgList);
+                        count = 0;
+                    }
+                    //var randomNum = Math.floor(Math.random() * (imgList.length - 0));
+                    var img = imgList[count];
+                    main_window.style.setProperty('--lwt-header-image', 'url("' + encodeURI('file:///' + img.replace(/\\/g, '/')) + '")', 'important');
+                    //main_window.style.setProperty('--lwt-background-alignment','TOP');                change();
+                    //var rainbow="#"+hex[r]+hex[g]+hex[b]
+                    main_window.querySelector('#tabbrowser-tabs').style.setProperty('-webkit-text-fill-color', getRandomColor(), 'important');
 
-                count++;
+                    count++;
+                    lastTabLabel = currentTabLabel;
+                }
             }
    });
         /*var interval=setInterval(function () {
