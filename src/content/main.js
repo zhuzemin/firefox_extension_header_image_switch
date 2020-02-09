@@ -20,24 +20,27 @@ var imgList=[];
     var g=1
     var b=1
     var seq=1
-    var entensionEnable;
+    var Header_Image_Switch_entensionEnable;
     try{
-        entensionEnable=getBoolPref('Header_Image_Switch_Enable');
+        Header_Image_Switch_entensionEnable=getBoolPref('Header_Image_Switch_Enable');
     }
     catch (e) {
-        entensionEnable=true;
+        Header_Image_Switch_entensionEnable=true;
     }
     var main_window=document.querySelector('#main-window');
 main();
 function main(){
-	if(imagePath!=null&&entensionEnable){
+	if(imagePath!=null&&Header_Image_Switch_entensionEnable){
+	    if(/^\./.test(imagePath)){
+	        imagePath=imagePath.replace('.',OS.Constants.Path.profileDir);
+        }
         readDir(imagePath);
         imgList=shuffle(imgList);
     //readDir(OS.Constants.Path.profileDir + '\\chrome\\header image');
         main_window.style.setProperty('background-size', 'contain', 'important');
         main_window.style.setProperty('text-shadow', '#222222 0.01em 0.01em 0.05em', 'important');
         window.gBrowser.addEventListener("select",  function () {
-            if(entensionEnable) {
+            if(Header_Image_Switch_entensionEnable) {
                 var currentTabLabel = window.gBrowser.selectedTab.label;
                 if (currentTabLabel != lastTabLabel) {
                     if (count == imgList.length) {
@@ -68,7 +71,12 @@ function main(){
 
             }
         },speed);*/
+        main_window.querySelector('#Header_Image_Switch_btn').className='Header_Image_Switch_enable';
 }
+else {
+        main_window.querySelector('#Header_Image_Switch_btn').className='Header_Image_Switch_disable';
+
+    }
 }
     //shuffle array
     function    shuffle (sourceArray) {
@@ -82,20 +90,20 @@ function main(){
         return sourceArray;
     }
 
-function entensionEnableSwitch(){
-        if(entensionEnable){
-            entensionEnable=false;
+function Header_Image_Switch_entensionEnableSwitch(){
+        if(Header_Image_Switch_entensionEnable){
+            Header_Image_Switch_entensionEnable=false;
             main_window.querySelector('#tabbrowser-tabs').style.setProperty('-webkit-text-fill-color', 'black', 'important');
             main_window.style.setProperty('--lwt-header-image', '', 'important');
-            main_window.querySelector('#Header_Image_Switch_btn').className='disable';
+            main_window.querySelector('#Header_Image_Switch_btn').className='Header_Image_Switch_disable';
         }
         else {
-            entensionEnable=true;
+            Header_Image_Switch_entensionEnable=true;
             main();
-            main_window.querySelector('#Header_Image_Switch_btn').className='enable';
+            main_window.querySelector('#Header_Image_Switch_btn').className='Header_Image_Switch_enable';
 
         }
-        setBoolPref('Header_Image_Switch_Enable',entensionEnable);
+        setBoolPref('Header_Image_Switch_Enable',Header_Image_Switch_entensionEnable);
     }
     function readDir(path) {
         var arr = readDirectory(path);
@@ -137,7 +145,7 @@ function entensionEnableSwitch(){
         return list;
 
     }
-function setPath(){
+function Header_Image_Switch_setPath(){
 var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
                         .getService(Components.interfaces.nsIPromptService);
 

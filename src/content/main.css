@@ -1,6 +1,6 @@
-.enable{
+.Header_Image_Switch_enable{
   list-style-image: url("chrome://Header_Image_Switch/content/acfun-19-on.png");
 }
-.disable{
+.Header_Image_Switch_disable{
   list-style-image: url("chrome://Header_Image_Switch/content/acfun-19-off.png");
 }

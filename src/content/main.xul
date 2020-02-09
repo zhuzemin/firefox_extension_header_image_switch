@@ -2,10 +2,10 @@
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script type="application/x-javascript" src="chrome://Header_Image_Switch/content/main.js"/>
   <toolbarpalette id="BrowserToolbarPalette">
- <toolbarbutton id="Header_Image_Switch_btn" class='enable' type="menu" label="Header Image Switch">
+ <toolbarbutton id="Header_Image_Switch_btn" class='Header_Image_Switch_enable' type="menu" label="Header Image Switch">
   <menupopup>
-    <menuitem label="Image folder path" oncommand="setPath()"/>
-    <menuitem label="Enable/Disable" oncommand="entensionEnableSwitch()"/>
+    <menuitem label="Image folder path" oncommand="Header_Image_Switch_setPath()"/>
+    <menuitem label="Enable/Disable" oncommand="Header_Image_Switch_entensionEnableSwitch()"/>
   </menupopup>
 </toolbarbutton>
    <!-- More buttons here. -->
